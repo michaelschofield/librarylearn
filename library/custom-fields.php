@@ -289,11 +289,16 @@ if(function_exists("register_field_group"))
 				'label' => 'How to add a new video',
 				'name' => '',
 				'type' => 'message',
-				'message' => '<h4>The Main Content Area</h4>
-					<p>Obviously, videos are videos and not text - so what should you add to the main text editor? Good 
+				'message' => '<h4>The Main Content Area</h4> <p>Obviously, videos are videos and not text - so what should you add to the main text editor? Good 
 					question, we\'re still trying to settle this. Videos and other multimedia aren\'t searchable, so when 
 					these pages are getting indexed, they appear almost blank! My immediate thinking is that the content should 
 					be a printable, step by step (with screenshots) tutorial. 
+
+					<h4>Video Files</h4>
+					<p>
+						The <strong>WebM</strong> and <strong>MP4</strong> files for your video need to be uploaded directly to the server by one of your department\'s representatives with FTP access. A list of department representatives is available
+						<a href="https://docs.google.com/spreadsheet/ccc?key=0AhR9ZEItrGuzdFNXcjByMnFGREh3M1ZBME5QbzNDMEE&usp=sharing#gid=0">here</a>. When your files are ready to be uploaded, send an email to your department\'s representatives letting them know the location of your files on the M drive and that they are ready to be uploaded to the server.
+					</p>
 
 					<h4>Categories and Tags</h4>
 
