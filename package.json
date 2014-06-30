@@ -1,0 +1,19 @@
+{
+  "name": "librarylearn",
+  "version": "1.1.0",
+  "description": "A WordPress theme built for maintaining a video repository.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shermanlibrary/librarylearn.git"
+  },
+  "author": "Michael Schofield",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shermanlibrary/librarylearn/issues"
+  },
+  "homepage": "https://github.com/shermanlibrary/librarylearn"
+}
