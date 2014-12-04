@@ -8,14 +8,14 @@ function library_academy_video() {
 		array('labels' => array(
 			'name' => __('LibraryLearn', 'bonestheme'), /* This is the Title of the Group */
 			'singular_name' => __('Video', 'bonestheme'), /* This is the individual type */
-			'all_items' => __('Instructional Videos', 'bonestheme'), /* the all items menu item */
-			'add_new' => __('Make another!', 'bonestheme'), /* The add new menu item */
-			'add_new_item' => __('Add an Instructional Video', 'bonestheme'), /* Add New Display Title */
+			'all_items' => __('All Videos', 'bonestheme'), /* the all items menu item */
+			'add_new' => __('Add New Video', 'bonestheme'), /* The add new menu item */
+			'add_new_item' => __('Add a Video', 'bonestheme'), /* Add New Display Title */
 			'edit' => __( 'Edit', 'bonestheme' ), /* Edit Dialog */
-			'edit_item' => __('Edit Academy Video', 'bonestheme'), /* Edit Display Title */
+			'edit_item' => __('Edit Video', 'bonestheme'), /* Edit Display Title */
 			'new_item' => __('New Video', 'bonestheme'), /* New Display Title */
-			'view_item' => __('Watch the Video', 'bonestheme'), /* View Display Title */
-			'search_items' => __('Search for a Video', 'bonestheme'), /* Search Custom Type Title */ 
+			'view_item' => __('View this Tutorial', 'bonestheme'), /* View Display Title */
+			'search_items' => __('Search for a Tutorial', 'bonestheme'), /* Search Custom Type Title */ 
 			'not_found' =>  __('Nothing found in the Database.', 'bonestheme'), /* This displays if there are no entries yet */ 
 			'not_found_in_trash' => __('Nothing found in Trash', 'bonestheme'), /* This displays if there is nothing in the trash */
 			'parent_item_colon' => ''
@@ -86,7 +86,7 @@ add_filter('gettext', 'library_academy_label_rewrite', 10, 4);
                 'add_new_item' => __( 'Add New Audience', 'bonestheme' ), /* add new title for taxonomy */
                 'new_item_name' => __( 'New Audience Name', 'bonestheme' ) /* name title for taxonomy */
             ),
-            'show_ui' => true,
+            'show_ui' => false,
             'query_var' => true,
             'capabilities' => array(
                 'manage_terms' => 'admin',
@@ -97,11 +97,6 @@ add_filter('gettext', 'library_academy_label_rewrite', 10, 4);
         )
     ); 	
     
-    /*
-    	looking for custom meta boxes?
-    	check out this fantastic tool:
-    	https://github.com/jaredatch/Custom-Metaboxes-and-Fields-for-WordPress
-    */
 	
 
 ?>
