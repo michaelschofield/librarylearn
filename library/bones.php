@@ -190,7 +190,6 @@ RELATED POSTS FUNCTION
 	
 // Related Posts Function (call using bones_related_posts(); )
 function library_related_videos() {
-	echo '<ul>';
 	global $post;
 	$tags = wp_get_post_tags($post->ID);
 	if($tags) {
@@ -208,21 +207,27 @@ function library_related_videos() {
         	
         	<?php if ( has_post_thumbnail() ) : ?>
         		
-        		<li class="related_post thumbnail thumbnail--gallery resource">
-        			<a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>">
-        				
-        				<?php echo the_post_thumbnail( 'media-small' ); ?>
-        				
-        				<span class="caption">	
-        					<?php the_title(); ?>
-        				</span>
-        			</a>
-        		</li>
+        		<div class="card">
+        			<article class="card__post">
+        				<div class="media">
+        					<a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>">
+        						<?php echo the_post_thumbnail( 'media-small' ); ?>
+        					</a>
+        				</div>
+        				<header class="card__post__header">
+        					<a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>">
+        						<h3 class="card__title zeta"><?php the_title(); ?></h3>
+        					</a>
+        				</header>
+        				<footer class="card__post__footer">
+        					<?php the_tags( '<p class="small-text">Related tags: ', ',', '</p>' ); ?>
+        				</footer>
+        			</article>
+        		</div>
 	        <?php endif; ?>
 	        <?php endforeach; } 
 	}
 	wp_reset_query();
-	echo '</ul>';
 } /* end bones related posts function */
 
 // Recent videos function

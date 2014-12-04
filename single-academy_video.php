@@ -47,15 +47,14 @@
 			<section class="post-content">
 
 				<?php the_content(); ?>
-				
+
 			</section> <!-- end article section -->
 			
 		</article> <!-- end article -->
 
 	</main>
 
-	<aside class="media">
-		<h4>Related Videos</h4>
+	<aside class="center-grid clearfix hero eightcol">
 		<?php library_related_videos(); ?>
 	</aside>
 
