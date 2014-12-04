@@ -1,18 +1,6 @@
 <?php
 
 /* ==================
- * Nasty Hobbitses
- * ================== */
-/* ==================
- * For use for a little bit of icky, user-agent templating,
- * mostly to handle responsive images for features.
- * We can't figure out how to get Detector to work inside a
- * WordPress, yet; until then we will use the UAParser directly,
- * with the intention to fully implement Detector when possible. */
-//require_once('library/Detector/lib/ua-parser-php/UAParser.php'); $ua = UA::parse(); 
-
-
-/* ==================
  * Needed Files
  * ================== */
 /*
@@ -100,32 +88,6 @@ register_nav_menus(
     )
 );
 
-/************* THUMBNAIL SIZE OPTIONS *************/
-
-// Thumbnail sizes
-add_image_size( 'video-small', 350, 193, true );
-add_image_size( 'video-medium', 570, 321, true );
-add_image_size( 'video-large', 720, 405, true );
-add_image_size( 'video-jumbo', 1140, 641, true );
-/* 
-to add more sizes, simply copy a line from above 
-and change the dimensions & name. As long as you
-upload a "featured image" as large as the biggest
-set width or height, all the other sizes will be
-auto-cropped.
-
-To call a different size, simply change the text
-inside the thumbnail function.
-
-For example, to call the 300 x 300 sized image, 
-we would use the function:
-<?php the_post_thumbnail( 'bones-thumb-300' ); ?>
-for the 600 x 100 image:
-<?php the_post_thumbnail( 'bones-thumb-600' ); ?>
-
-You can change the names and dimensions to whatever
-you like. Enjoy!
-*/
 
 /* ==================
  * $MENU Functions

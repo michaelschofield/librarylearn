@@ -1,25 +1,4 @@
 <?php
-/**
- *  Install Add-ons
- *  
- *  The following code will include all 4 premium Add-Ons in your theme.
- *  Please do not attempt to include a file which does not exist. This will produce an error.
- *  
- *  The following code assumes you have a folder 'add-ons' inside your theme.
- *
- *  IMPORTANT
- *  Add-ons may be included in a premium theme/plugin as outlined in the terms and conditions.
- *  For more information, please read:
- *  - http://www.advancedcustomfields.com/terms-conditions/
- *  - http://www.advancedcustomfields.com/resources/getting-started/including-lite-mode-in-a-plugin-theme/
- */ 
-
-// Add-ons 
-// include_once('add-ons/acf-repeater/acf-repeater.php');
-// include_once('add-ons/acf-gallery/acf-gallery.php');
-// include_once('add-ons/acf-flexible-content/acf-flexible-content.php');
-// include_once( 'add-ons/acf-options-page/acf-options-page.php' );
-
 
 /**
  *  Register Field Groups
@@ -34,20 +13,12 @@ if(function_exists("register_field_group"))
 		'id' => 'acf_video',
 		'title' => 'Video',
 		'fields' => array (
-			array (
+			/* array (
 				'key' => 'field_52f9194f4c91e',
 				'label' => 'Special Templating',
 				'name' => 'academy_video_format',
 				'type' => 'select',
-				'instructions' => '<ol>
-		<li>
-		 <b>Standard</b> <br>You have all the individual pieces of your video (.mp4, .webm, .jpg, .srt / .vtt) and they have been uploaded to the library\\\'s media server. Videos in this way will be presented within the <b>video</b> element, adapt to any screen, and otherwise look pretty dashing.
-		
-		<p><small><b>Browser Support</b> [for reference]: Internet Explorer 9+, Google Chrome 3.0 +, Firefox 3.5 +, Opera 10.5 +, Safari 3.1 +</small></p>
-		</li>
-		
-		<li><b>Adobe Captivate</b> <br>Captivate project files need to be similarly uploaded, and these pages LibraryLearn will present within with an iframe.</li>
-		</ol>',
+				'instructions' => '',
 				'choices' => array (
 					'standard' => 'Standard ( :) )',
 					'captivate' => 'Adobe Captivate ( :( )',
@@ -55,19 +26,20 @@ if(function_exists("register_field_group"))
 				'default_value' => 'standard',
 				'allow_null' => 0,
 				'multiple' => 0,
-			),
+			),*/
 			array (
 				'key' => 'field_52f91aa116e75',
-				'label' => 'Files',
+				'label' => 'Checklist',
 				'name' => 'academy_checklist',
 				'type' => 'checkbox',
-				'instructions' => '<p>Let\'s make sure you have everything you need. If not, you should save this draft and get all these things together.</p>',
+				'instructions' => 'Before you start, do you have everything?',
 				'required' => 1,
 				'choices' => array (
 					'webm' => 'WebM Video',
 					'mp4' => 'MP4 Video',
-					'srt' => 'Captions ( SRT )',
-					'jpg' => '16:9 Screenshot',
+					'srt' => 'Captions ( .vtt )',
+					'transcript' => 'Transcript',
+					'jpg' => 'Screenshot',
 				),
 				'default_value' => '',
 				'layout' => 'vertical',
@@ -123,7 +95,7 @@ if(function_exists("register_field_group"))
 			),
 			array (
 				'key' => 'field_52f91c7ef7009',
-				'label' => 'Upload Captions ( .srt / .vtt )',
+				'label' => 'Upload Captions ( .vtt )',
 				'name' => 'captions',
 				'type' => 'file',
 				'save_format' => 'url',
@@ -178,7 +150,7 @@ if(function_exists("register_field_group"))
 
 if(function_exists("register_field_group"))
 {
-		register_field_group(array (
+		/*register_field_group(array (
 		'id' => 'acf_marketing-options',
 		'title' => 'Marketing Options',
 		'fields' => array (
@@ -279,7 +251,7 @@ if(function_exists("register_field_group"))
 			),
 		),
 		'menu_order' => 2,
-	));
+	));*/
 	register_field_group(array (
 		'id' => 'acf_a-brief-primer',
 		'title' => 'Instructions',
@@ -289,30 +261,21 @@ if(function_exists("register_field_group"))
 				'label' => 'How to add a new video',
 				'name' => '',
 				'type' => 'message',
-				'message' => '<h4>The Main Content Area</h4> <p>Obviously, videos are videos and not text - so what should you add to the main text editor? Good 
-					question, we\'re still trying to settle this. Videos and other multimedia aren\'t searchable, so when 
-					these pages are getting indexed, they appear almost blank! My immediate thinking is that the content should 
-					be a printable, step by step (with screenshots) tutorial. 
-
-					<h4>Video Files</h4>
+				'message' => '				
+					<h4>Upload Video Files</h4>
 					<p>
-						The <strong>WebM</strong> and <strong>MP4</strong> files for your video need to be uploaded directly to the server by one of your department\'s representatives with FTP access. A list of department representatives is available
-						<a href="https://docs.google.com/spreadsheet/ccc?key=0AhR9ZEItrGuzdFNXcjByMnFGREh3M1ZBME5QbzNDMEE&usp=sharing#gid=0">here</a>. When your files are ready to be uploaded, send an email to your department\'s representatives letting them know the location of your files on the M drive and that they are ready to be uploaded to the server.
+						Each video has two video files: a WEBM and MP4. These need to be uploaded to the media server by <a href="https://docs.google.com/spreadsheet/ccc?key=0AhR9ZEItrGuzdFNXcjByMnFGREh3M1ZBME5QbzNDMEE&usp=sharing#gid=0">one of these people</a>.
+						When your files are ready to be uploaded, send an email to your department\'s representatives letting them know the location of your files on the M drive and that they are ready to be uploaded to the server.
 					</p>
 
 					<h4>Categories and Tags</h4>
 
 					<p>
-						Choose any relevant categories from the <b>Categories</b> list. Check as many that make sense, but <i>do not select more than one top-level category</i>. For instance,	a video can be either filed as Citation Management, Getting Started, or Research, but it can be under as many sub-topics as you like: articles, apa, education, etc.
+						Choose any relevant categories from the <b>Categories</b> list. Check as many that make sense, but <i>do not select more than one top-level category</i>. 
 					</p>
 
 					<p>
-						<b>Tags</b> are terms you want the video associated with when a user searches within LibraryLearn,
-						so if you want your video to appear if a student searches "test," then add that as a tag. See, categories
-						aren\'t part of the search term, so while it may seem redundant to tag a video "articles" while in the Articles 
-						category, it\'s not. Tags are also used to connect related videos. For example, if you have several videos about APA 
-						tat you would like to show up as related videos, you can add the tag "APA" to each video. 
-					</p>
+						<b>Tags</b> are terms you want the video associated with when a user searches within LibraryLearn, so if you want your video to appear if a student searches "test," then add that as a tag. </p>
 
 					<p>
 						First, check the "Choose from the most used tags" link to see if the tag you want to use already exists. If you 
@@ -326,18 +289,25 @@ if(function_exists("register_field_group"))
 					</p>
 
 					<h4>A Brief Summary</h4>
-					Write a brief summary of the video in the same-titled area below the main content. This blurb sells your video and it\'s what shows in series and lists. If you write more than three sentences, then the content won\'t look suspiciously sparse or format stupidly next to its thumbnail. 
+					Write a brief summary of the video in the same-titled area below the main content. This blurb sells your video and it\'s what shows in series and lists. 
 					
 						<blockquote>Learn how to navigate the library website. Watch as he left-clicks through the social obstacles that stand between him and the heavyweight championship of the world. In his gruff, hard-to-understand way, he\'ll also explain browser support. </blockquote>
-					
+
+					<h4>WYSIWYG / Main Content Area</h4> 
+					<p>Please copy your transcript into the main WYSIWYG/content area below and embellish as necessary. Delete the time signatures, of course.
+
 					<h4>Featured Image</h4>
-					Upload a <b>16:9 ratio screenshot</b> (e.g., 720x405 ) under "Featured Image," usually located on your right. Your image must have a resolution of <b>92</b>.
+					Upload a <b>16:9 ratio screenshot</b> (e.g., 720x405 ) under "Featured Image," usually located on your right. Your image must have a resolution of <b>72</b>.
 					<oL>
 						<li>Click "Set Featured Image"</li>
 						<li>If the screenshot isn\'t already in the "Media Library", click "Upload Files".</li>
 						<li><b>Title</b> your image something sensible and human (not "picture305.jpg").</li>
 						<li>For accessibility purposes your image <b>must</b> have "Alt Text." Alt text is a description of the image for the hearing impaired. So if you upload a picture of a horse, the alt text might be, "A brown horse standing in a field."</li>
-					</ol>',
+					</ol>
+
+					<h4>Pending Review</h4>
+					<p>When you have finished filling out this form and have submitted your video for upload, send an email to your department\'s representative to let them know your video is ready for review.</p>
+					',
 			),
 		),
 		'location' => array (
