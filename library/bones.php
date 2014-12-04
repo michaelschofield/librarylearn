@@ -1,11 +1,5 @@
 <?php
 
-/*********************
-LAUNCH BONES
-Let's fire off all the functions
-and tools. I put it up here so it's
-right up top and clean.
-*********************/
 
 // we're firing all out initial functions at the start
 add_action('after_setup_theme','bones_ahoy', 15);
@@ -115,10 +109,10 @@ function bones_scripts_and_styles() {
     wp_register_script( 'bones-modernizr', '//sherman.library.nova.edu/cdn/scripts/libs/modernizr.custom.min.js', array(), '2.7.1', false );
  
     // register main stylesheet
-    wp_register_style( 'pls-stylesheet', '//sherman.library.nova.edu/cdn/styles/css/public-global/public.css', array(), '1.9.1', 'all' );
+    wp_register_style( 'pls-stylesheet', '//sherman2.library.nova.edu/cdn/styles/css/public-global/public.css', array(), '', 'all' );
 
     // ie-only style sheet
-    wp_register_style( 'pls-ie-only', '//sherman.library.nova.edu/cdn/styles/css/public-global/public-ie.css', array(), '1.9.1' );
+    wp_register_style( 'pls-ie-only', '//sherman2.library.nova.edu/cdn/styles/css/public-global/public-ie.css', array(), '' );
     
     // comment reply script for threaded comments
     if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {

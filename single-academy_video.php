@@ -1,110 +1,67 @@
 <?php get_header(); ?>
 
-<section class="background-base has-background hero media">
 
-	<div class="wrap clearfix">
+<div id="content" itemscope itemtype="http://schema.org/VideoObject">
 
-	<?php if (have_posts()) : while (have_posts()) : the_post(); setPostViews(get_the_ID());?>
+	<section class="background-base has-background media" >
 
-	<?php
+		<div class="clearfix hero wrap">
 
-	// 1. Get the format of the tutorial
-	$academy_video_format = get_post_meta( get_the_ID(), 'academy_video_format', true); 
+		<?php 
+		if (have_posts()) : while (have_posts()) : the_post();
+		$video = get_post_meta( get_the_ID(), 'academy_video_file', true); 
+		?>
 
-	/* ==================
-	 * From here, some logic!
-	 */ // If the tutorial video requires anything but the standalone files
-		// --it was produced through Adobe Captivate, for instance--then we need 
-		// to adjust the display accordingly.
-		if ( $academy_video_format != 'standard' ) :
+			<video class="shadow" poster="<?php echo wp_get_attachment_url( get_post_thumbnail_id() ); ?>" height="100%" width="100%" autoplay controls itemprop="video">
+	   
+				<source type='video/webm; codecs="vp8, vorbis"' src="//nova.edu/library/video/<?php echo $video; ?>.webm" />
+				<source type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' src="//nova.edu/library/video/<?php echo $video ?>.mp4" />
+				<track kind="subtitles" src="<?php echo wp_get_attachment_url( get_post_meta( get_the_ID(), 'captions', true ) ); ?>" srclang="en" label="English">
 
-			$adobe_captivate_url = get_post_meta( get_the_ID(), 'captivate_url', true);
-		 ?>
+				<p class="alert alert--danger">Sorry. Your browser doesn't support HTML5 video.</p>
 
-		 <div class="fluid-embed-wrapper">
-		 	<iframe frameborder="0" src="<?php echo $adobe_captivate_url ?>"></iframe>
-	 	</div>
+			</video>
 
+		</div>
 
-		<?php
-		else :
-		 ?>
+	</section>
 
-		<?php get_template_part('template-standard_video_format'); ?>
-		<?php $video_root = 'http://www.nova.edu/library/video/' . get_post_meta( get_the_ID(), 'academy_video_file', true); ?>
+	<header class="hero eightcol center-grid clearfix">
+		
+		<h1 class="beta" itemprop="name"><?php the_title(); ?></h1>
 
+	</header>		
 
+	<main class="center-grid clearfix eightcol" role="main">
 
-	<?php endif; ?>
-	</div>
+		<nav class="clearfix">
+			<a href="#">Related Videos</a>
+		<button class="button button--link last" onClick="window.print()">
+			<svg class="icon-print" style="width: 16px; height: 16px;"><use xlink:href="#icon-print"></use></svg>
+			Print Tutorial
+		</button>
+		</nav>
 
-</section>
+		<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article" itemprop="transcript">
+				
+			<section class="post-content">
 
-<header class="hero wrap clearfix">
-	<h1 class="single-title" itemprop="headline"><?php the_title(); ?></h1>
-	<p class="epsilon">
-		<?php echo get_the_excerpt(); ?>
-	</p>
-</header>
-
-<div id="content">
-
-	<div id="inner-content" class="wrap clearfix">
-
-			<div id="main" class="eightcol last clearfix" role="main">
-				<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
-						
-					<section class="post-content" itemprop="articleBody">
-						<h3>Additional Notes</h3>
-						<?php the_content(); ?>
-					</section> <!-- end article section -->
+				<?php the_content(); ?>
+				
+			</section> <!-- end article section -->
 			
-					<?php //comments_template();// comments should go inside the article element ?>
-		
-				</article> <!-- end article -->
-		
-			</div> <!-- end #main -->
+		</article> <!-- end article -->
 
-			<div class="first fourcol sidebar">
-				<ul class="menu">
-				<?php if ( $academy_video_format == 'standard' ) : ?>
-					<li>
-						<a href="<?php echo wp_get_attachment_url( get_post_meta( get_the_ID(), 'captions', true ) ); ?>">Read the Transcript</a>
-					</li>
-					<li>
-						<a href="<?php echo $video_root; ?>.mp4" title="Download the MP4">Download the Video</a>
-					</li>
-				<?php endif; ?>
-				</ul>
+	</main>
 
-				<aside class="media">
-					<h4>Related Videos</h4>
-					<?php library_related_videos(); ?>
-				</aside>
-			</div>
-
-		
-
-	</div> <!-- end #inner-content -->
+	<aside class="media">
+		<h4>Related Videos</h4>
+		<?php library_related_videos(); ?>
+	</aside>
 
 </div> <!-- end #content -->
 
-	<?php endwhile; ?>			
-
-	<?php else : ?>
-
-		<article id="post-not-found" class="hentry clearfix">
-    		<header class="article-header">
-    			<h1><?php _e("Oops, Post Not Found!", "bonestheme"); ?></h1>
-    		</header>
-    		<section class="post-content">
-    			<p><?php _e("Uh Oh. Something is missing. Try double checking things.", "bonestheme"); ?></p>
-    		</section>
-    		<footer class="article-footer">
-    		    <p><?php _e("This is the error message in the single.php template.", "bonestheme"); ?></p>
-    		</footer>
-		</article>
-
+	<?php endwhile; ?>	
 	<?php endif; ?>
 
 <?php get_footer(); ?>

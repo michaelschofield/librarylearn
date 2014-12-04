@@ -32,7 +32,9 @@
 	
 	</head>
 	
-	<body <?php body_class('librarylearn'); ?>>
+	<body <?php body_class(); ?>>
+
+	<?php get_template_part( 'partials/svg-icons' ); ?>
 
 		<div id="container">
 			
